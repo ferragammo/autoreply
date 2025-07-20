@@ -39,6 +39,9 @@ async def create_task_for_ticket(task_content: str, ticket_id: str) -> str:
             "body": task_content,
             "subject": f"Response to ticket (ID: {ticket_id})"
         },
+        "associations": {
+            "ticketIds": [ticket_id],
+        },
         "ownerId": settings.HUBSPOT_OWNER_ID
     }
 
