@@ -9,6 +9,7 @@ async def add_transcription(
     request: Request,
 ):
     payload = await request.json()
+    print(payload)
     ticket_id = payload[0].get('objectId')
     content = await get_ticket_content(ticket_id)
     print(content)
