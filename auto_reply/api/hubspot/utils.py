@@ -27,3 +27,34 @@ async def get_ticket_content(ticket_id: str) -> str:
 
     except Exception as e:
         return f"Unexpected error: {str(e)}"
+
+
+async def create_task_for_ticket(task_content: str, ticket_id: str) -> str:
+    data = {
+        "engagement": {
+            "active": True,
+            "type": "TASK",
+        },
+        "metadata": {
+            "body": task_content,
+            "subject": f"Response to ticket (ID: {ticket_id})"
+        },
+        "ownerId": settings.HUBSPOT_OWNER_ID
+    }
+
+    url = "https://api.hubapi.com/engagements/v1/engagements"
+
+    headers = {
+        'Authorization': f'Bearer {settings.HUBSPOT_ACCESS_TOKEN}',
+        'Content-Type': 'application/json'
+    }
+
+    async with httpx.AsyncClient() as client:
+        response = await client.post(url, headers=headers, json=data)
+
+    if response.status_code == 200:
+        return "The task has been successfully created for ticket review"
+    else:
+        return "Error: {response.status_code} {response.text}"
+
+
