@@ -14,10 +14,10 @@ load_dotenv()
 class BaseConfig:
     BASE_DIR: pathlib.Path = pathlib.Path(__file__).parent.parent.parent
     HUBSPOT_ACCESS_TOKEN = os.getenv("HUBSPOT_ACCESS_TOKEN")
-    LLM_MINI = ChatOpenAI(model="gpt-4.1-mini", temperature=0.3, use_responses_api=True)
-    DB_CLIENT = motor.motor_asyncio.AsyncIOMotorClient(os.getenv("MONGO_DB_URL")).reply
-    MONGO_CLIENT = MongoClient(os.getenv('MONGO_DB_URL'))
-    OPENAI_CLIENT = AsyncClient(api_key=os.getenv('OPENAI_API_KEY'))
+    # LLM_MINI = ChatOpenAI(model="gpt-4.1-mini", temperature=0.3, use_responses_api=True)
+    # DB_CLIENT = motor.motor_asyncio.AsyncIOMotorClient(os.getenv("MONGO_DB_URL")).reply
+    # MONGO_CLIENT = MongoClient(os.getenv('MONGO_DB_URL'))
+    # OPENAI_CLIENT = AsyncClient(api_key=os.getenv('OPENAI_API_KEY'))
 
 
 class DevelopmentConfig(BaseConfig):
