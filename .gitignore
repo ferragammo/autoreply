@@ -9,3 +9,5 @@ pip-wheel-EntityData/
 .env
 .DS_Store
 static/
+Dockerfile
+README.md

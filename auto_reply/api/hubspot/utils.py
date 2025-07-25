@@ -29,14 +29,14 @@ async def get_ticket_content(ticket_id: str) -> str:
         return f"Unexpected error: {str(e)}"
 
 
-async def create_task_for_ticket(task_content: str, ticket_id: str) -> str:
+async def create_note_for_ticket(note_content: str, ticket_id: str) -> str:
     data = {
         "engagement": {
             "active": True,
-            "type": "TASK",
+            "type": "NOTE",
         },
         "metadata": {
-            "body": task_content,
+            "body": note_content,
             "subject": f"Response to ticket (ID: {ticket_id})"
         },
         "associations": {
@@ -56,8 +56,6 @@ async def create_task_for_ticket(task_content: str, ticket_id: str) -> str:
         response = await client.post(url, headers=headers, json=data)
 
     if response.status_code == 200:
-        return "The task has been successfully created for ticket review"
+        return "The note has been successfully created for ticket review"
     else:
         return "Error: {response.status_code} {response.text}"
-
-

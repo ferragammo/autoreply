@@ -5,7 +5,7 @@ from fastapi import Request
 from auto_reply.api.agent.agent import ReplyAgent
 from auto_reply.api.agent.db_requests import get_message_history
 from auto_reply.api.hubspot import hubspot_router
-from auto_reply.api.hubspot.utils import get_ticket_content, create_task_for_ticket
+from auto_reply.api.hubspot.utils import get_ticket_content, create_note_for_ticket
 
 
 @hubspot_router.post("/ticket")
@@ -20,7 +20,7 @@ async def process_ticket(
     )
     agent = ReplyAgent(history)
     agent_response = await agent.run(content)
-    response = await create_task_for_ticket(agent_response, ticket_id)
+    response = await create_note_for_ticket(agent_response, ticket_id)
     return response
 
 
