@@ -42,7 +42,7 @@ async def create_note_for_ticket(note_content: str, ticket_id: str) -> str:
         "associations": {
             "ticketIds": [int(ticket_id)],
         },
-        "ownerId": settings.HUBSPOT_OWNER_ID
+        "ownerId": 123
     }
 
     url = "https://api.hubapi.com/engagements/v1/engagements"
@@ -59,3 +59,4 @@ async def create_note_for_ticket(note_content: str, ticket_id: str) -> str:
         return "The note has been successfully created for ticket review"
     else:
         return "Error: {response.status_code} {response.text}"
+

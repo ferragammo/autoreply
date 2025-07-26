@@ -19,6 +19,7 @@ class BaseConfig:
     MONGO_CLIENT = MongoClient(os.getenv('MONGO_DB_URL'))
     OPENAI_CLIENT = AsyncClient(api_key=os.getenv('OPENAI_API_KEY'))
     HUBSPOT_OWNER_ID = os.getenv('HUBSPOT_OWNER_ID')
+    VS_ID = os.getenv('VS_ID')
 
 
 class DevelopmentConfig(BaseConfig):
