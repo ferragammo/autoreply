@@ -20,7 +20,7 @@ async def query_semantic_tool(query: str) -> str:
             temperature=0.0,
             tools=[{
                 "type": "file_search",
-                "vector_store_ids": settings.VS_ID
+                "vector_store_ids": [settings.VS_ID]
             }]
         )
         return response.output_text
