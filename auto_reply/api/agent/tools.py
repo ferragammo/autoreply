@@ -11,7 +11,7 @@ async def query_semantic_tool(query: str) -> str:
         query (str): A query string that defines the question or topic for which relevant text chunks are to be retrieved.
 
     Returns:
-        Any: A collection of relevant text chunks that provide the answer to the user's question."""
+        Str: Response based on a relevant text chunks that provide the answer to the user's question."""
     try:
         response = await settings.OPENAI_CLIENT.responses.create(
             model="gpt-4o-mini",
